@@ -51,7 +51,7 @@ export function buildMetadata({
       title: fullTitle,
       description,
       images: ogImages,
-      creator: "@jasminbhesaniya",
+      creator: "@BhesaniyaJb",
     },
     robots: noIndex
       ? { index: false, follow: false }

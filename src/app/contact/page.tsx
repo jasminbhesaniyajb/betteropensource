@@ -65,7 +65,7 @@ export default function ContactPage() {
               <span className="flex size-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
                 <GithubIcon className="size-4" />
               </span>
-              github.com/jasminbhesaniya
+              github.com/jasminbhesaniyajb
             </a>
           </Card>
           <Card className="bg-muted/30 p-6 text-sm text-muted-foreground">

@@ -22,10 +22,10 @@ export const siteConfig = {
     phoneDisplay: "+91 78746 79215",
   },
   links: {
-    github: "https://github.com/jasminbhesaniya/betteropensource",
-    githubProfile: "https://github.com/jasminbhesaniya",
-    twitter: "https://twitter.com/jasminbhesaniya",
-    linkedin: "https://www.linkedin.com/in/jasminbhesaniya",
+    github: "https://github.com/jasminbhesaniyajb",
+    githubProfile: "https://github.com/jasminbhesaniyajb",
+    twitter: "https://x.com/BhesaniyaJb",
+    linkedin: "https://www.linkedin.com/in/jasmin-bhesaniya",
     portfolio: "https://jasminbhesaniya.com",
   },
   /** owner/repo that feedback Issues are filed against (overridable via env). */

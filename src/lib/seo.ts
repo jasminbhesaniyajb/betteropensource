@@ -7,7 +7,6 @@ interface BuildMetadataArgs {
   description?: string;
   /** Path relative to the site root, e.g. "/tools/penpot". */
   path?: string;
-  images?: string[];
   type?: "website" | "article";
   noIndex?: boolean;
   keywords?: readonly string[];
@@ -17,19 +16,20 @@ interface BuildMetadataArgs {
 /**
  * Builds a consistent Metadata object. `metadataBase` is set in the root
  * layout, so canonical/OG paths can be relative.
+ *
+ * OG/Twitter cards use the static image at `public/betteropensource.png`
+ * (set on every page so per-page openGraph doesn't drop it).
  */
 export function buildMetadata({
   title,
   description = siteConfig.description,
   path = "/",
-  images,
   type = "website",
   noIndex = false,
   keywords,
   publishedTime,
 }: BuildMetadataArgs = {}): Metadata {
   const fullTitle = title ?? `${siteConfig.name} — ${siteConfig.tagline}`;
-  const ogImages = images ?? [siteConfig.ogImage];
 
   return {
     title: title ?? undefined,
@@ -43,14 +43,21 @@ export function buildMetadata({
       description,
       siteName: siteConfig.name,
       locale: siteConfig.locale,
-      images: ogImages,
+      images: [
+        {
+          url: siteConfig.ogImage,
+          width: siteConfig.ogImageWidth,
+          height: siteConfig.ogImageHeight,
+          alt: siteConfig.name,
+        },
+      ],
       ...(publishedTime ? { publishedTime } : {}),
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description,
-      images: ogImages,
+      images: [siteConfig.ogImage],
       creator: "@BhesaniyaJb",
     },
     robots: noIndex

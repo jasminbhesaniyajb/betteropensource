@@ -13,7 +13,10 @@ export const siteConfig = {
   description:
     "BetterOpenSource is a curated directory of the best open-source alternatives to popular proprietary software. Compare features, licenses, and GitHub activity to find self-hostable replacements that fit your workflow and cut recurring costs.",
   url: siteUrl,
-  ogImage: `${siteUrl}/opengraph-image`,
+  /** Static social card image in /public (used for OG + Twitter). */
+  ogImage: "/betteropensource.png",
+  ogImageWidth: 2868,
+  ogImageHeight: 1302,
   locale: "en_US",
   author: {
     name: "Jasmin Bhesaniya",

@@ -723,6 +723,58 @@ export const tools: Tool[] = [
     addedAt: "2026-02-03",
     updatedAt: "2026-05-16",
   },
+  {
+    slug: "docmost",
+    name: "Docmost",
+    tagline: "Open-source collaborative wiki and documentation.",
+    description:
+      "Docmost is an open-source wiki and knowledge base for teams. It offers real-time collaborative editing, organized spaces, granular permissions, and powerful search — plus self-hosted AI chat grounded in your own docs. A privacy-friendly, self-hostable alternative to Confluence and Notion wikis.",
+    logo: "",
+    websiteUrl: "https://docmost.com",
+    repoUrl: "https://github.com/docmost/docmost",
+    docsUrl: "https://docmost.com/docs",
+    githubStars: 18000,
+    githubForks: 1200,
+    contributors: 80,
+    lastCommit: "2026-05-20",
+    license: "AGPL-3.0",
+    language: "TypeScript",
+    categorySlug: "notes",
+    tags: ["Wiki", "Docs", "Knowledge Base", "Self-hosted", "Collaboration"],
+    pricing: "open-source",
+    isOpenSource: true,
+    selfHostable: true,
+    alternativeToSlugs: ["confluence", "notion"],
+    features: [
+      "Real-time collaborative editing with live cursors",
+      "Team spaces with granular role-based permissions",
+      "Rich editor with tables, code blocks, and diagrams (Draw.io, Excalidraw, Mermaid)",
+      "Self-hosted AI chat and semantic search grounded in your docs",
+      "SSO/SAML, OpenID Connect, and LDAP for enterprises",
+    ],
+    pros: [
+      "Polished, fast collaborative wiki experience",
+      "Strong enterprise controls and self-hosting (even air-gapped)",
+      "Easy migration from Confluence and Notion",
+    ],
+    cons: [
+      "AGPL license carries copyleft obligations",
+      "Some advanced enterprise features are paid",
+    ],
+    install: [
+      { label: "Run with Docker Compose", command: "curl -O https://raw.githubusercontent.com/docmost/docmost/main/docker-compose.yml && docker compose up -d" },
+    ],
+    screenshots: [],
+    faqs: [
+      { question: "Can I migrate from Confluence or Notion?", answer: "Yes — Docmost provides import tooling to bring over your existing content." },
+      { question: "Is collaboration real-time?", answer: "Yes, with live cursors and simultaneous editing." },
+      { question: "Can I self-host it?", answer: "Yes, via Docker, including on-premises and air-gapped deployments." },
+    ],
+    rating: { value: 4.6, votes: 142 },
+    addedAt: "2026-05-31",
+    updatedAt: "2026-05-31",
+    trending: true,
+  },
 
   // ───────────────────────── Productivity ─────────────────────────
   {

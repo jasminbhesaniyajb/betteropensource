@@ -1,0 +1,113 @@
+import Link from "next/link";
+import { Globe, Mail, Phone } from "lucide-react";
+import { Brand } from "@/components/common/brand";
+import { Icon } from "@/components/common/icon";
+import { NewsletterForm } from "@/components/common/newsletter-form";
+import { footerNav, socialLinks } from "@/constants/navigation";
+import { siteConfig } from "@/constants/site";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+export function SiteFooter() {
+  const year = new Date().getFullYear();
+
+  return (
+    <footer className="border-t bg-muted/30">
+      <div className="mx-auto w-full max-w-7xl container-px py-12 lg:py-16">
+        <div className="grid gap-10 lg:grid-cols-[1.5fr_2fr]">
+          {/* Brand + newsletter */}
+          <div className="flex flex-col gap-5">
+            <Brand />
+            <p className="max-w-sm text-sm text-muted-foreground">
+              {siteConfig.description}
+            </p>
+            {/* <div className="space-y-2">
+              <p className="text-sm font-medium">Get the best new tools, monthly</p>
+              <NewsletterForm />
+            </div> */}
+            <div className="flex items-center gap-1">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.title}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.title}
+                  className={cn(buttonVariants({ variant: "ghost", size: "icon" }))}
+                >
+                  <Icon name={social.icon} className="size-4" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Link columns */}
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+            {footerNav.map((group) => (
+              <div key={group.title} className="flex flex-col gap-3">
+                <h3 className="text-sm font-semibold">{group.title}</h3>
+                <ul className="flex flex-col gap-2.5">
+                  {group.items.map((item) => (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                      >
+                        {item.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Author / contact */}
+        <div className="mt-12 grid gap-4 rounded-xl border bg-background/60 p-5 sm:grid-cols-2 sm:items-center">
+          <div>
+            <p className="text-sm text-muted-foreground">Built and maintained by</p>
+            <p className="font-heading text-lg font-semibold">
+              {siteConfig.author.name}
+            </p>
+          </div>
+          <div className="flex flex-col gap-2 sm:items-end">
+            <a
+              href={siteConfig.links.portfolio}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <Globe className="size-4" />
+              Portfolio
+            </a>
+            <a
+              href={`tel:${siteConfig.author.phone}`}
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <Phone className="size-4" />
+              {siteConfig.author.phoneDisplay}
+            </a>
+            <a
+              href={`mailto:${siteConfig.author.email}`}
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <Mail className="size-4" />
+              {siteConfig.author.email}
+            </a>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t pt-6 text-sm text-muted-foreground sm:flex-row">
+          <p>
+            © {year} {siteConfig.name}. Curated open-source discovery.
+          </p>
+          <p>
+            Made with care for the open-source community.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}

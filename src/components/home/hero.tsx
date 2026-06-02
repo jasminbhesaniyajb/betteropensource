@@ -88,7 +88,7 @@ export function Hero({ stats }: { stats: DirectoryStats }) {
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search Figma, Notion, Slack…"
-            className="h-9 flex-1 bg-transparent text-base outline-none placeholder:text-muted-foreground"
+            className="h-9 w-full min-w-0 flex-1 bg-transparent text-base outline-none placeholder:text-muted-foreground"
           />
           <button
             type="submit"

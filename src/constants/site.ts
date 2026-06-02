@@ -25,7 +25,7 @@ export const siteConfig = {
     phoneDisplay: "+91 78746 79215",
   },
   links: {
-    github: "https://github.com/jasminbhesaniyajb",
+    github: "https://github.com/jasminbhesaniyajb/betteropensource",
     githubProfile: "https://github.com/jasminbhesaniyajb",
     twitter: "https://x.com/BhesaniyaJb",
     linkedin: "https://www.linkedin.com/in/jasmin-bhesaniya",
@@ -33,7 +33,7 @@ export const siteConfig = {
   },
   /** owner/repo that feedback Issues are filed against (overridable via env). */
   feedbackRepo:
-    process.env.GITHUB_FEEDBACK_REPO ?? "jasminbhesaniya/betteropensource",
+    process.env.GITHUB_FEEDBACK_REPO ?? "jasminbhesaniyajb/betteropensource",
   keywords: [
     "open source alternatives",
     "open-source software",

@@ -57,7 +57,7 @@ export default function ContactPage() {
               {siteConfig.author.phoneDisplay}
             </a>
             <a
-              href={siteConfig.links.github}
+              href={siteConfig.links.githubProfile}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-foreground"

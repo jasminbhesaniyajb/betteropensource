@@ -4,7 +4,7 @@
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
-  "https://betteropensource.dev";
+  "https://betteropensource.jasminbhesaniya.com";
 
 export const siteConfig = {
   name: "BetterOpenSource",

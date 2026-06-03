@@ -5,6 +5,7 @@ import { ExternalLink } from "lucide-react";
 import {
   getAllTools,
   getCategory,
+  getProprietary,
   getToolBySlug,
 } from "@/services/tools";
 import {
@@ -46,11 +47,34 @@ export async function generateMetadata({
   const tool = getToolBySlug(slug);
   if (!tool) return {};
   const category = getCategory(tool.categorySlug);
+  const replaces = tool.alternativeToSlugs
+    .map((s) => getProprietary(s)?.name)
+    .filter(Boolean)[0];
+
+  // Keyword-intent title/description: target "[tool] open source" and
+  // "[proprietary] alternative" search queries.
+  const title = replaces
+    ? `${tool.name} — Open-Source ${replaces} Alternative`
+    : `${tool.name} — ${tool.tagline}`;
+  const description = (
+    replaces
+      ? `${tool.name} is a free, open-source alternative to ${replaces}. ${tool.tagline}`
+      : tool.description
+  ).slice(0, 158);
+
   return buildMetadata({
-    title: `${tool.name} — ${tool.tagline}`,
-    description: tool.description.slice(0, 158),
+    title,
+    description,
     path: `/tools/${slug}`,
-    keywords: [tool.name, ...tool.tags, category?.shortName ?? "open source"],
+    keywords: [
+      tool.name,
+      `${tool.name} open source`,
+      ...(replaces
+        ? [`${replaces} alternative`, `open source ${replaces} alternative`]
+        : []),
+      ...tool.tags,
+      category?.shortName ?? "open source",
+    ],
   });
 }
 

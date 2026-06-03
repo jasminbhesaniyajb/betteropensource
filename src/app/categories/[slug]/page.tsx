@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   getAllCategories,
@@ -65,6 +66,26 @@ export default async function CategoryPage({
         className="mb-8"
       />
       <ToolExplorer tools={tools} showCategoryFilter={false} />
+
+      <section className="mt-14 border-t pt-8">
+        <h2 className="font-heading text-lg font-semibold">
+          Browse other categories
+        </h2>
+        <ul className="mt-4 flex flex-wrap gap-2">
+          {getAllCategories()
+            .filter((c) => c.slug !== slug)
+            .map((c) => (
+              <li key={c.slug}>
+                <Link
+                  href={`/categories/${c.slug}`}
+                  className="inline-flex rounded-full border px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
+                >
+                  {c.name}
+                </Link>
+              </li>
+            ))}
+        </ul>
+      </section>
     </div>
   );
 }

@@ -4,12 +4,20 @@ import { Brand } from "@/components/common/brand";
 import { Icon } from "@/components/common/icon";
 import { NewsletterForm } from "@/components/common/newsletter-form";
 import { footerNav, socialLinks } from "@/constants/navigation";
+import {
+  getCategoriesWithCounts,
+  getProprietaryWithCounts,
+} from "@/services/tools";
 import { siteConfig } from "@/constants/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
+  const popularAlternatives = getProprietaryWithCounts().slice(0, 8);
+  const popularCategories = [...getCategoriesWithCounts()]
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 8);
 
   return (
     <footer className="border-t bg-muted/30">
@@ -60,6 +68,40 @@ export function SiteFooter() {
                 </ul>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Popular hubs — site-wide internal links for crawl + link equity */}
+        <div className="mt-10 grid gap-8 border-t pt-8 sm:grid-cols-2">
+          <div>
+            <h3 className="text-sm font-semibold">Popular alternatives</h3>
+            <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
+              {popularAlternatives.map((p) => (
+                <li key={p.slug}>
+                  <Link
+                    href={`/alternatives/${p.slug}`}
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {p.name} alternatives
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold">Popular categories</h3>
+            <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
+              {popularCategories.map((c) => (
+                <li key={c.slug}>
+                  <Link
+                    href={`/categories/${c.slug}`}
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {c.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 

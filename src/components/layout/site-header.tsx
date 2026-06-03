@@ -2,6 +2,7 @@ import { Brand } from "@/components/common/brand";
 import { MainNav } from "@/components/layout/main-nav";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { SearchTrigger } from "@/components/layout/search-trigger";
+import { BookmarksLink } from "@/components/layout/bookmarks-link";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { GithubIcon } from "@/components/common/brand-icons";
 import { buttonVariants } from "@/components/ui/button";
@@ -19,6 +20,7 @@ export function SiteHeader() {
 
         <div className="ml-auto flex items-center gap-1.5">
           <SearchTrigger className="hidden sm:flex" />
+          <BookmarksLink />
           <a
             href={siteConfig.links.github}
             target="_blank"

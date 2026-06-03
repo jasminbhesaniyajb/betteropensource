@@ -77,6 +77,7 @@ export const proprietaryTools: ProprietaryTool[] = [
   // Backend
   { slug: "firebase", name: "Firebase", description: "Google's backend-as-a-service suite.", logo: si("firebase"), categorySlug: "backend" },
   { slug: "auth0", name: "Auth0", description: "Hosted authentication and identity.", logo: si("auth0"), categorySlug: "backend" },
+  { slug: "clerk", name: "Clerk", description: "Hosted authentication and complete user management with drop-in UI.", logo: si("clerk"), categorySlug: "backend" },
 ];
 
 export const proprietaryBySlug = new Map(

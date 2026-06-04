@@ -19,6 +19,7 @@ import { cn } from "@/lib/utils";
 
 const secondaryLinks = [
   { title: "New Tools", href: "/new" },
+  { title: "Submit an open-source tool", href: "/submit" },
   { title: "Bookmarks", href: "/bookmarks" },
   { title: "About", href: "/about" },
   { title: "Contact", href: "/contact" },

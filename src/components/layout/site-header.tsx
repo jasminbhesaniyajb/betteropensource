@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { Plus } from "lucide-react";
 import { Brand } from "@/components/common/brand";
 import { MainNav } from "@/components/layout/main-nav";
 import { MobileNav } from "@/components/layout/mobile-nav";
@@ -34,6 +36,18 @@ export function SiteHeader() {
             <GithubIcon className="size-4" />
           </a>
           <ThemeToggle />
+          <Link
+            href="/submit"
+            aria-label="Submit an open-source tool"
+            title="Submit an open-source tool"
+            className={cn(
+              buttonVariants({ size: "sm" }),
+              "hidden gap-1.5 md:inline-flex",
+            )}
+          >
+            <Plus className="size-4" />
+            Submit a tool
+          </Link>
           <MobileNav />
         </div>
       </div>

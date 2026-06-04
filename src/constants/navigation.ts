@@ -38,6 +38,7 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
     items: [
       { title: "Trending", href: "/trending" },
       { title: "New Tools", href: "/new" },
+      { title: "Submit a Tool", href: "/submit" },
       { title: "Bookmarks", href: "/bookmarks" },
       { title: "Blog", href: "/blog" },
     ],

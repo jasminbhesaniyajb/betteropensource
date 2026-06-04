@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   getProprietary,
   getProprietaryWithCounts,
   getToolsForProprietary,
+  sortTools,
 } from "@/services/tools";
 import { buildMetadata, breadcrumbJsonLd, itemListJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/common/json-ld";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
+import { AnswerBox } from "@/components/common/answer-box";
 import { Logo } from "@/components/common/logo";
 import { ToolExplorer } from "@/components/alternatives/tool-explorer";
 
@@ -44,6 +47,8 @@ export default async function AlternativePage({
 
   const tools = getToolsForProprietary(slug);
   if (tools.length === 0) notFound();
+
+  const top = sortTools(tools, "popular").slice(0, Math.min(5, tools.length));
 
   return (
     <div className="mx-auto w-full max-w-7xl container-px py-6 lg:py-8">
@@ -82,6 +87,35 @@ export default async function AlternativePage({
           Replace {proprietary.name} with an open-source tool you can host and
           control. Compare features, licenses, and community activity below.
         </p>
+      </div>
+
+      <div className="mb-8">
+        <AnswerBox>
+          The best open-source {proprietary.name} alternatives are{" "}
+          {top.map((t, i) => {
+            const sep =
+              i === 0
+                ? ""
+                : i === top.length - 1
+                  ? top.length > 2
+                    ? ", and "
+                    : " and "
+                  : ", ";
+            return (
+              <span key={t.slug}>
+                {sep}
+                <Link
+                  href={`/tools/${t.slug}`}
+                  className="font-medium text-primary hover:underline"
+                >
+                  {t.name}
+                </Link>
+              </span>
+            );
+          })}
+          . All {tools.length} are free, open source, and self-hostable —
+          compare their features, licenses, and GitHub activity below.
+        </AnswerBox>
       </div>
 
       <ToolExplorer tools={tools} showCategoryFilter={false} />

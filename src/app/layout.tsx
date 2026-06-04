@@ -33,7 +33,15 @@ export const metadata: Metadata = {
   keywords: [...siteConfig.keywords],
   authors: [{ name: siteConfig.author.name }],
   creator: siteConfig.author.name,
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    types: {
+      "application/rss+xml": [
+        { url: "/feed.xml", title: `${siteConfig.name} — New Tools` },
+        { url: "/blog/feed.xml", title: `${siteConfig.name} Blog` },
+      ],
+    },
+  },
   openGraph: {
     type: "website",
     locale: siteConfig.locale,

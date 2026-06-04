@@ -167,6 +167,22 @@ export function itemListJsonLd(tools: Tool[], name: string) {
   };
 }
 
+export function howToJsonLd(tool: Tool) {
+  if (!tool.install || tool.install.length === 0) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `How to install ${tool.name}`,
+    description: `Get started with ${tool.name} — ${tool.tagline}`,
+    step: tool.install.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.label,
+      text: s.command ?? (s.steps ? s.steps.join(" ") : s.label),
+    })),
+  };
+}
+
 export function blogPostingJsonLd(post: BlogPost) {
   return {
     "@context": "https://schema.org",

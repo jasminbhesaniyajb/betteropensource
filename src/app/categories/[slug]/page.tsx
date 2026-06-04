@@ -5,10 +5,12 @@ import {
   getAllCategories,
   getCategory,
   getToolsByCategory,
+  sortTools,
 } from "@/services/tools";
 import { buildMetadata, breadcrumbJsonLd, itemListJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/common/json-ld";
 import { PageHeader } from "@/components/common/page-header";
+import { AnswerBox } from "@/components/common/answer-box";
 import { ToolExplorer } from "@/components/alternatives/tool-explorer";
 
 export const dynamicParams = false;
@@ -42,6 +44,7 @@ export default async function CategoryPage({
   if (!category) notFound();
 
   const tools = getToolsByCategory(slug);
+  const top = sortTools(tools, "popular").slice(0, Math.min(5, tools.length));
 
   return (
     <div className="mx-auto w-full max-w-7xl container-px py-6 lg:py-8">
@@ -65,6 +68,38 @@ export default async function CategoryPage({
         description={category.description}
         className="mb-8"
       />
+
+      {top.length > 0 ? (
+        <div className="mb-8">
+          <AnswerBox>
+            Top open-source picks in {category.name} are{" "}
+            {top.map((t, i) => {
+              const sep =
+                i === 0
+                  ? ""
+                  : i === top.length - 1
+                    ? top.length > 2
+                      ? ", and "
+                      : " and "
+                    : ", ";
+              return (
+                <span key={t.slug}>
+                  {sep}
+                  <Link
+                    href={`/tools/${t.slug}`}
+                    className="font-medium text-primary hover:underline"
+                  >
+                    {t.name}
+                  </Link>
+                </span>
+              );
+            })}
+            . Compare all {tools.length} below by features, license, and GitHub
+            activity.
+          </AnswerBox>
+        </div>
+      ) : null}
+
       <ToolExplorer tools={tools} showCategoryFilter={false} />
 
       <section className="mt-14 border-t pt-8">

@@ -12,6 +12,7 @@ import {
   breadcrumbJsonLd,
   buildMetadata,
   faqJsonLd,
+  howToJsonLd,
   softwareAppJsonLd,
 } from "@/lib/seo";
 import { JsonLd } from "@/components/common/json-ld";
@@ -27,10 +28,10 @@ import { InstallGuide } from "@/components/tool/install-guide";
 import { FaqAccordion } from "@/components/tool/faq-accordion";
 import { ProprietaryComparison } from "@/components/tool/proprietary-comparison";
 import { RelatedTools } from "@/components/tool/related-tools";
-import { VoteWidget } from "@/components/tool/vote-widget";
 import { ShareButtons } from "@/components/tool/share-buttons";
 import { TrackView } from "@/components/tool/track-view";
-import { formatDate, hostFromUrl } from "@/lib/format";
+import { BadgeEmbed } from "@/components/tool/badge-embed";
+import { formatDate, hostFromUrl, licenseLabel } from "@/lib/format";
 
 export const dynamicParams = false;
 
@@ -122,6 +123,10 @@ export default async function ToolPage({
   if (!tool) notFound();
 
   const category = getCategory(tool.categorySlug);
+  const replaces = tool.alternativeToSlugs
+    .map((s) => getProprietary(s)?.name)
+    .filter(Boolean)
+    .join(", ");
 
   return (
     <div className="mx-auto w-full max-w-7xl container-px py-6 lg:py-8">
@@ -134,7 +139,8 @@ export default async function ToolPage({
             { name: tool.name, path: `/tools/${slug}` },
           ]),
           faqJsonLd(tool.faqs),
-        ]}
+          howToJsonLd(tool),
+        ].filter(Boolean) as object[]}
       />
       <TrackView slug={tool.slug} />
       <ToolHeader tool={tool} />
@@ -142,6 +148,14 @@ export default async function ToolPage({
       <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_320px]">
         <div className="flex min-w-0 flex-col gap-10">
           <Section title="Overview">
+            <p className="text-base font-medium text-foreground">
+              {tool.name} is a free, open-source tool
+              {replaces
+                ? ` and a self-hostable alternative to ${replaces}`
+                : ""}
+              . It&apos;s licensed under {licenseLabel(tool.license)} and written
+              in {tool.language}.
+            </p>
             <p className="leading-relaxed text-muted-foreground">
               {tool.description}
             </p>
@@ -199,9 +213,10 @@ export default async function ToolPage({
           </Card>
 
           <div className="flex flex-col gap-3">
-            <VoteWidget slug={tool.slug} baseVotes={tool.rating.votes} />
             <ShareButtons title={`${tool.name} — open-source alternative`} />
           </div>
+
+          <BadgeEmbed slug={tool.slug} />
         </aside>
       </div>
 

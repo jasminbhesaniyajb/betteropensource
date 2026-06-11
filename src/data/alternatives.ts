@@ -62,6 +62,11 @@ export const proprietaryTools: ProprietaryTool[] = [
   { slug: "datadog", name: "Datadog", description: "Cloud monitoring and observability.", logo: si("datadog"), categorySlug: "dev-tools" },
   { slug: "new-relic", name: "New Relic", description: "Application performance monitoring.", logo: si("newrelic"), categorySlug: "dev-tools" },
   { slug: "algolia", name: "Algolia", description: "Hosted search-as-a-service API.", logo: si("algolia"), categorySlug: "dev-tools" },
+  { slug: "docker-desktop", name: "Docker Desktop", description: "Container development environment, paid for larger companies.", logo: si("docker"), categorySlug: "dev-tools" },
+  { slug: "ngrok", name: "ngrok", description: "Hosted tunnels that expose local servers to the internet.", logo: si("ngrok"), categorySlug: "dev-tools" },
+  { slug: "github", name: "GitHub", description: "Microsoft's hosted git platform with CI and packages.", logo: si("github"), categorySlug: "dev-tools" },
+  { slug: "terraform", name: "Terraform", description: "HashiCorp's infrastructure-as-code tool, now BUSL-licensed.", logo: si("terraform"), categorySlug: "dev-tools" },
+  { slug: "sentry", name: "Sentry", description: "Hosted error tracking and application monitoring.", logo: si("sentry"), categorySlug: "dev-tools" },
 
   // Hosting
   { slug: "heroku", name: "Heroku", description: "Managed platform-as-a-service.", logo: si("heroku"), categorySlug: "hosting" },

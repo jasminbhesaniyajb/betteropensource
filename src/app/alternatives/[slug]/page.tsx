@@ -50,27 +50,23 @@ export default async function AlternativePage({
 
   const top = sortTools(tools, "popular").slice(0, Math.min(5, tools.length));
 
+  const crumbs = [
+    { name: "Home", href: "/" },
+    { name: "Alternatives", href: "/alternatives" },
+    { name: proprietary.name, href: `/alternatives/${slug}` },
+  ];
+
   return (
     <div className="mx-auto w-full max-w-7xl container-px py-6 lg:py-8">
       <JsonLd
         data={[
-          breadcrumbJsonLd([
-            { name: "Home", path: "/" },
-            { name: "Alternatives", path: "/alternatives" },
-            { name: proprietary.name, path: `/alternatives/${slug}` },
-          ]),
+          breadcrumbJsonLd(crumbs),
           itemListJsonLd(tools, `Open-source ${proprietary.name} alternatives`),
         ]}
       />
 
       <div className="mb-8 flex flex-col gap-4">
-        <Breadcrumbs
-          items={[
-            { name: "Home", href: "/" },
-            { name: "Alternatives", href: "/alternatives" },
-            { name: proprietary.name },
-          ]}
-        />
+        <Breadcrumbs items={crumbs} />
         <div className="flex items-center gap-4">
           <Logo src={proprietary.logo} name={proprietary.name} size={56} />
           <div>

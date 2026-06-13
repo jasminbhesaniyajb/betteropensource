@@ -12,16 +12,16 @@ export const metadata = buildMetadata({
 });
 
 export default function SubmitPage() {
+  const crumbs = [
+    { name: "Home", href: "/" },
+    { name: "Submit a tool", href: "/submit" },
+  ];
+
   return (
     <div className="mx-auto w-full max-w-2xl container-px py-6 lg:py-8">
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "Submit a tool", path: "/submit" },
-        ])}
-      />
+      <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <PageHeader
-        breadcrumbs={[{ name: "Home", href: "/" }, { name: "Submit a tool" }]}
+        breadcrumbs={crumbs}
         title="Submit an open-source tool"
         description="Spotted a great open-source alternative we're missing? Suggest it below — submissions open a GitHub issue for review."
         className="mb-8"

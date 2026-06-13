@@ -54,24 +54,18 @@ export default async function ComparePairPage({
 
   const tools = [a, b];
 
+  const crumbs = [
+    { name: "Home", href: "/" },
+    { name: "Compare", href: "/compare" },
+    { name: `${a.name} vs ${b.name}`, href: `/compare/${slug}` },
+  ];
+
   return (
     <div className="mx-auto w-full max-w-7xl container-px py-6 lg:py-8">
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "Compare", path: "/compare" },
-          { name: `${a.name} vs ${b.name}`, path: `/compare/${slug}` },
-        ])}
-      />
+      <JsonLd data={breadcrumbJsonLd(crumbs)} />
 
       <div className="mb-8 flex flex-col gap-3">
-        <Breadcrumbs
-          items={[
-            { name: "Home", href: "/" },
-            { name: "Compare", href: "/compare" },
-            { name: `${a.name} vs ${b.name}` },
-          ]}
-        />
+        <Breadcrumbs items={crumbs} />
         <h1 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
           {a.name} <span className="text-muted-foreground">vs</span> {b.name}
         </h1>

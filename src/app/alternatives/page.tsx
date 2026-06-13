@@ -16,17 +16,16 @@ export const metadata = buildMetadata({
 
 export default function AlternativesPage() {
   const items = getProprietaryWithCounts();
+  const crumbs = [
+    { name: "Home", href: "/" },
+    { name: "Alternatives", href: "/alternatives" },
+  ];
 
   return (
     <div className="mx-auto w-full max-w-7xl container-px py-6 lg:py-8">
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "Alternatives", path: "/alternatives" },
-        ])}
-      />
+      <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <PageHeader
-        breadcrumbs={[{ name: "Home", href: "/" }, { name: "Alternatives" }]}
+        breadcrumbs={crumbs}
         title="Find an open-source alternative"
         description="Choose the proprietary tool you want to replace and we'll show you the best open-source options."
         className="mb-8"

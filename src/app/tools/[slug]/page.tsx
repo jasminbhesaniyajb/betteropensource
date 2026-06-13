@@ -128,22 +128,29 @@ export default async function ToolPage({
     .filter(Boolean)
     .join(", ");
 
+  // Reflect a typical user path (category hierarchy) rather than mirroring the
+  // URL structure, per Google's breadcrumb guidance. One source drives both the
+  // visible trail (in ToolHeader) and the BreadcrumbList JSON-LD below.
+  const crumbs = [
+    { name: "Home", href: "/" },
+    category
+      ? { name: category.name, href: `/categories/${category.slug}` }
+      : { name: "Tools", href: "/tools" },
+    { name: tool.name, href: `/tools/${slug}` },
+  ];
+
   return (
     <div className="mx-auto w-full max-w-7xl container-px py-6 lg:py-8">
       <JsonLd
         data={[
           softwareAppJsonLd(tool),
-          breadcrumbJsonLd([
-            { name: "Home", path: "/" },
-            { name: "Tools", path: "/tools" },
-            { name: tool.name, path: `/tools/${slug}` },
-          ]),
+          breadcrumbJsonLd(crumbs),
           faqJsonLd(tool.faqs),
           howToJsonLd(tool),
         ].filter(Boolean) as object[]}
       />
       <TrackView slug={tool.slug} />
-      <ToolHeader tool={tool} />
+      <ToolHeader tool={tool} crumbs={crumbs} />
 
       <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_320px]">
         <div className="flex min-w-0 flex-col gap-10">

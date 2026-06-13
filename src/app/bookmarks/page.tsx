@@ -13,7 +13,10 @@ export default function BookmarksPage() {
   return (
     <div className="mx-auto w-full max-w-7xl container-px py-6 lg:py-8">
       <PageHeader
-        breadcrumbs={[{ name: "Home", href: "/" }, { name: "Bookmarks" }]}
+        breadcrumbs={[
+          { name: "Home", href: "/" },
+          { name: "Bookmarks", href: "/bookmarks" },
+        ]}
         title="Your bookmarks"
         description="Tools you've saved, stored locally in your browser — no account needed."
         className="mb-8"

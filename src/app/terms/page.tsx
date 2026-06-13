@@ -1,4 +1,5 @@
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/common/json-ld";
 import { PageHeader } from "@/components/common/page-header";
 import { Markdown } from "@/components/blog/markdown";
 import { siteConfig } from "@/constants/site";
@@ -44,10 +45,16 @@ Questions about these terms? Email us at ${siteConfig.author.email}.
 _Last updated: May 2026._`;
 
 export default function TermsPage() {
+  const crumbs = [
+    { name: "Home", href: "/" },
+    { name: "Terms of Service", href: "/terms" },
+  ];
+
   return (
     <div className="mx-auto w-full max-w-3xl container-px py-10 lg:py-14">
+      <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <PageHeader
-        breadcrumbs={[{ name: "Home", href: "/" }, { name: "Terms of Service" }]}
+        breadcrumbs={crumbs}
         title="Terms of Service"
         className="mb-8"
       />

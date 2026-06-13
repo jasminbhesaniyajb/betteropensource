@@ -15,16 +15,16 @@ export const metadata = buildMetadata({
 });
 
 export default function ContactPage() {
+  const crumbs = [
+    { name: "Home", href: "/" },
+    { name: "Contact", href: "/contact" },
+  ];
+
   return (
     <div className="mx-auto w-full max-w-5xl container-px py-10 lg:py-14">
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "Contact", path: "/contact" },
-        ])}
-      />
+      <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <PageHeader
-        breadcrumbs={[{ name: "Home", href: "/" }, { name: "Contact" }]}
+        breadcrumbs={crumbs}
         title="Get in touch"
         description="Questions, partnerships, or a tool we should add? Drop us a line."
         className="mb-8"

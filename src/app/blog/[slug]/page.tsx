@@ -45,25 +45,16 @@ export default async function BlogPostPage({
   const post = postBySlug.get(slug);
   if (!post) notFound();
 
+  const crumbs = [
+    { name: "Home", href: "/" },
+    { name: "Blog", href: "/blog" },
+    { name: post.title, href: `/blog/${slug}` },
+  ];
+
   return (
     <article className="mx-auto w-full max-w-3xl container-px py-10 lg:py-14">
-      <JsonLd
-        data={[
-          blogPostingJsonLd(post),
-          breadcrumbJsonLd([
-            { name: "Home", path: "/" },
-            { name: "Blog", path: "/blog" },
-            { name: post.title, path: `/blog/${slug}` },
-          ]),
-        ]}
-      />
-      <Breadcrumbs
-        items={[
-          { name: "Home", href: "/" },
-          { name: "Blog", href: "/blog" },
-          { name: post.title },
-        ]}
-      />
+      <JsonLd data={[blogPostingJsonLd(post), breadcrumbJsonLd(crumbs)]} />
+      <Breadcrumbs items={crumbs} />
       <div className="mt-5 flex flex-wrap gap-1.5">
         {post.tags.map((t) => (
           <Badge key={t} variant="secondary">

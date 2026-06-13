@@ -30,16 +30,16 @@ export default function ComparePage() {
     .map(([a, b]) => ({ a: getToolBySlug(a), b: getToolBySlug(b) }))
     .filter((x): x is { a: Tool; b: Tool } => Boolean(x.a && x.b));
 
+  const crumbs = [
+    { name: "Home", href: "/" },
+    { name: "Compare", href: "/compare" },
+  ];
+
   return (
     <div className="mx-auto w-full max-w-7xl container-px py-6 lg:py-8">
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "Compare", path: "/compare" },
-        ])}
-      />
+      <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <PageHeader
-        breadcrumbs={[{ name: "Home", href: "/" }, { name: "Compare" }]}
+        breadcrumbs={crumbs}
         title="Compare tools side by side"
         description="Pick any two open-source tools to see how they stack up on features, licensing, and community."
         className="mb-8"

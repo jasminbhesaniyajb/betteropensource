@@ -13,17 +13,16 @@ export const metadata = buildMetadata({
 
 export default function TrendingPage() {
   const tools = getAllTools();
+  const crumbs = [
+    { name: "Home", href: "/" },
+    { name: "Trending", href: "/trending" },
+  ];
 
   return (
     <div className="mx-auto w-full max-w-7xl container-px py-6 lg:py-8">
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "Trending", path: "/trending" },
-        ])}
-      />
+      <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <PageHeader
-        breadcrumbs={[{ name: "Home", href: "/" }, { name: "Trending" }]}
+        breadcrumbs={crumbs}
         title="Trending open-source tools"
         description="What developers are starring and adopting right now."
         className="mb-8"

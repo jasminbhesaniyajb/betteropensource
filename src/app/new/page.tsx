@@ -13,17 +13,16 @@ export const metadata = buildMetadata({
 
 export default function NewPage() {
   const tools = getAllTools();
+  const crumbs = [
+    { name: "Home", href: "/" },
+    { name: "New Tools", href: "/new" },
+  ];
 
   return (
     <div className="mx-auto w-full max-w-7xl container-px py-6 lg:py-8">
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "New", path: "/new" },
-        ])}
-      />
+      <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <PageHeader
-        breadcrumbs={[{ name: "Home", href: "/" }, { name: "New Tools" }]}
+        breadcrumbs={crumbs}
         title="Newly added tools"
         description="The freshest open-source projects in the directory."
         className="mb-8"

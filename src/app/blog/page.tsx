@@ -15,17 +15,16 @@ export default function BlogPage() {
   const posts = [...blogPosts].sort(
     (a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt),
   );
+  const crumbs = [
+    { name: "Home", href: "/" },
+    { name: "Blog", href: "/blog" },
+  ];
 
   return (
     <div className="mx-auto w-full max-w-7xl container-px py-6 lg:py-8">
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "Blog", path: "/blog" },
-        ])}
-      />
+      <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <PageHeader
-        breadcrumbs={[{ name: "Home", href: "/" }, { name: "Blog" }]}
+        breadcrumbs={crumbs}
         title="Guides & playbooks"
         description="Comparisons, migration guides, and deep dives on going open-source."
         className="mb-8"

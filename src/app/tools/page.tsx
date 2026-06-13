@@ -18,20 +18,21 @@ export default async function ToolsPage({
 }) {
   const { q } = await searchParams;
   const tools = getAllTools();
+  const crumbs = [
+    { name: "Home", href: "/" },
+    { name: "Tools", href: "/tools" },
+  ];
 
   return (
     <div className="mx-auto w-full max-w-7xl container-px py-6 lg:py-8">
       <JsonLd
         data={[
-          breadcrumbJsonLd([
-            { name: "Home", path: "/" },
-            { name: "Tools", path: "/tools" },
-          ]),
+          breadcrumbJsonLd(crumbs),
           itemListJsonLd(tools, "Open-source tools"),
         ]}
       />
       <PageHeader
-        breadcrumbs={[{ name: "Home", href: "/" }, { name: "Tools" }]}
+        breadcrumbs={crumbs}
         title="Browse all open-source tools"
         description={`${tools.length} hand-reviewed open-source tools you can adopt or self-host today.`}
         className="mb-8"

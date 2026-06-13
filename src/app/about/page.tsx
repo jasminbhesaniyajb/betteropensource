@@ -39,17 +39,16 @@ const criteria = [
 
 export default function AboutPage() {
   const stats = getStats();
+  const crumbs = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+  ];
 
   return (
     <div className="mx-auto w-full max-w-4xl container-px py-10 lg:py-14">
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "About", path: "/about" },
-        ])}
-      />
+      <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <PageHeader
-        breadcrumbs={[{ name: "Home", href: "/" }, { name: "About" }]}
+        breadcrumbs={crumbs}
         title="Open source, made easy to choose"
         description="BetterOpenSource is a curated directory that helps you replace expensive, proprietary software with open-source tools you can trust, host, and own."
         className="mb-10"

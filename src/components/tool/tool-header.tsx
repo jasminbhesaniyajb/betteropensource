@@ -1,5 +1,5 @@
 import { ExternalLink, Star } from "lucide-react";
-import { Breadcrumbs } from "@/components/common/breadcrumbs";
+import { Breadcrumbs, type Crumb } from "@/components/common/breadcrumbs";
 import { Logo } from "@/components/common/logo";
 import { OpenSourceBadge, SelfHostBadge } from "@/components/common/badges";
 import { RatingStars } from "@/components/tool/rating-stars";
@@ -11,7 +11,7 @@ import { formatStars } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import type { Tool } from "@/types";
 
-export function ToolHeader({ tool }: { tool: Tool }) {
+export function ToolHeader({ tool, crumbs }: { tool: Tool; crumbs: Crumb[] }) {
   const altNames = tool.alternativeToSlugs
     .map((s) => getProprietary(s)?.name)
     .filter(Boolean)
@@ -19,13 +19,7 @@ export function ToolHeader({ tool }: { tool: Tool }) {
 
   return (
     <div className="flex flex-col gap-5">
-      <Breadcrumbs
-        items={[
-          { name: "Home", href: "/" },
-          { name: "Tools", href: "/tools" },
-          { name: tool.name },
-        ]}
-      />
+      <Breadcrumbs items={crumbs} />
 
       <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
         <Logo src={tool.logo} name={tool.name} size={72} rounded="rounded-2xl" />

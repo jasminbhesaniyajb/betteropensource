@@ -46,24 +46,22 @@ export default async function CategoryPage({
   const tools = getToolsByCategory(slug);
   const top = sortTools(tools, "popular").slice(0, Math.min(5, tools.length));
 
+  const crumbs = [
+    { name: "Home", href: "/" },
+    { name: "Categories", href: "/categories" },
+    { name: category.name, href: `/categories/${slug}` },
+  ];
+
   return (
     <div className="mx-auto w-full max-w-7xl container-px py-6 lg:py-8">
       <JsonLd
         data={[
-          breadcrumbJsonLd([
-            { name: "Home", path: "/" },
-            { name: "Categories", path: "/categories" },
-            { name: category.name, path: `/categories/${slug}` },
-          ]),
+          breadcrumbJsonLd(crumbs),
           itemListJsonLd(tools, `${category.name} tools`),
         ]}
       />
       <PageHeader
-        breadcrumbs={[
-          { name: "Home", href: "/" },
-          { name: "Categories", href: "/categories" },
-          { name: category.name },
-        ]}
+        breadcrumbs={crumbs}
         title={`Best open-source ${category.shortName.toLowerCase()}`}
         description={category.description}
         className="mb-8"

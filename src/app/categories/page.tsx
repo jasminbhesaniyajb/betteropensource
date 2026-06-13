@@ -13,17 +13,16 @@ export const metadata = buildMetadata({
 
 export default function CategoriesPage() {
   const categories = getCategoriesWithCounts();
+  const crumbs = [
+    { name: "Home", href: "/" },
+    { name: "Categories", href: "/categories" },
+  ];
 
   return (
     <div className="mx-auto w-full max-w-7xl container-px py-6 lg:py-8">
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "Categories", path: "/categories" },
-        ])}
-      />
+      <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <PageHeader
-        breadcrumbs={[{ name: "Home", href: "/" }, { name: "Categories" }]}
+        breadcrumbs={crumbs}
         title="Explore by category"
         description="Open-source software organized the way you work — pick a category to see the best tools in it."
         className="mb-8"

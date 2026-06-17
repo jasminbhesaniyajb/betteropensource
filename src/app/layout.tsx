@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
+import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 
 import { siteConfig } from "@/constants/site";
@@ -81,6 +82,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
   return (
     <html
@@ -89,6 +91,7 @@ export default function RootLayout({
       className={`${fontSans.variable} ${fontMono.variable} ${fontHeading.variable} h-full`}
     >
       <body className="flex min-h-full flex-col antialiased">
+        {gtmId ? <GoogleTagManager gtmId={gtmId} /> : null}
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

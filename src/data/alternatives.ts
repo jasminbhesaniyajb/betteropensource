@@ -15,6 +15,7 @@ export const proprietaryTools: ProprietaryTool[] = [
   { slug: "openai-assistants", name: "OpenAI Assistants", description: "Hosted framework for building AI agents.", logo: si("openai"), categorySlug: "ai-agents" },
   { slug: "claude-code", name: "Claude Code", description: "Anthropic's agentic command-line coding assistant.", logo: si("claude"), categorySlug: "ai-coding" },
   { slug: "cursor", name: "Cursor", description: "AI-first code editor built on VS Code.", logo: si("cursor"), categorySlug: "ai-coding" },
+  { slug: "devin", name: "Devin", description: "Cognition's autonomous AI software engineer that completes coding tasks end-to-end.", logo: si("devin"), categorySlug: "ai-coding" },
 
   // Design
   { slug: "figma", name: "Figma", description: "Collaborative interface design and prototyping.", logo: si("figma"), categorySlug: "design" },

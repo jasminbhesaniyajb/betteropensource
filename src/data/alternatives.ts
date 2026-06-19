@@ -68,6 +68,8 @@ export const proprietaryTools: ProprietaryTool[] = [
   { slug: "github", name: "GitHub", description: "Microsoft's hosted git platform with CI and packages.", logo: si("github"), categorySlug: "dev-tools" },
   { slug: "terraform", name: "Terraform", description: "HashiCorp's infrastructure-as-code tool, now BUSL-licensed.", logo: si("terraform"), categorySlug: "dev-tools" },
   { slug: "sentry", name: "Sentry", description: "Hosted error tracking and application monitoring.", logo: si("sentry"), categorySlug: "dev-tools" },
+  { slug: "unlayer", name: "Unlayer", description: "Embeddable drag-and-drop email and page editor SDK for SaaS apps.", logo: si("unlayer"), categorySlug: "dev-tools" },
+  { slug: "beefree", name: "BeeFree", description: "Hosted drag-and-drop email builder with an embeddable editor (BEE Plugin).", logo: si("beefree"), categorySlug: "dev-tools" },
 
   // Hosting
   { slug: "heroku", name: "Heroku", description: "Managed platform-as-a-service.", logo: si("heroku"), categorySlug: "hosting" },

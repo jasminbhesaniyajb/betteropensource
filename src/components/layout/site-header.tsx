@@ -6,9 +6,8 @@ import { MobileNav } from "@/components/layout/mobile-nav";
 import { SearchTrigger } from "@/components/layout/search-trigger";
 import { BookmarksLink } from "@/components/layout/bookmarks-link";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
-import { GithubIcon } from "@/components/common/brand-icons";
+import { StarOnGithub } from "@/components/layout/star-on-github";
 import { buttonVariants } from "@/components/ui/button";
-import { siteConfig } from "@/constants/site";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
@@ -23,18 +22,7 @@ export function SiteHeader() {
         <div className="ml-auto flex items-center gap-1.5">
           <SearchTrigger className="hidden sm:flex" />
           <BookmarksLink />
-          <a
-            href={siteConfig.links.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub repository"
-            className={cn(
-              buttonVariants({ variant: "ghost", size: "icon" }),
-              "hidden sm:inline-flex",
-            )}
-          >
-            <GithubIcon className="size-4" />
-          </a>
+          <StarOnGithub className="hidden sm:inline-flex" />
           <ThemeToggle />
           <Link
             href="/submit"

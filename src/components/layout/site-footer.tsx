@@ -3,6 +3,7 @@ import { Globe, Mail, Phone } from "lucide-react";
 import { Brand } from "@/components/common/brand";
 import { Icon } from "@/components/common/icon";
 import { NewsletterForm } from "@/components/common/newsletter-form";
+import { StarOnGithub } from "@/components/layout/star-on-github";
 import { footerNav, socialLinks } from "@/constants/navigation";
 import {
   getCategoriesWithCounts,
@@ -47,6 +48,11 @@ export function SiteFooter() {
                 </a>
               ))}
             </div>
+            <p className="text-sm text-muted-foreground">
+              Found this useful? Star the project on GitHub — it helps more
+              developers discover open-source alternatives.
+            </p>
+            <StarOnGithub className="w-fit" />
           </div>
 
           {/* Link columns */}

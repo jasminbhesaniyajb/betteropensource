@@ -30,6 +30,12 @@ export const siteConfig = {
     twitter: "https://x.com/BhesaniyaJb",
     linkedin: "https://www.linkedin.com/in/jasmin-bhesaniya",
     portfolio: "https://jasminbhesaniya.com",
+    productHunt:
+      "https://www.producthunt.com/products/betteropensource?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-betteropensource",
+  },
+  /** Product Hunt embed badge — postId drives the embed-image SVG URL. */
+  productHunt: {
+    postId: "1179380",
   },
   /** owner/repo that feedback Issues are filed against (overridable via env). */
   feedbackRepo:

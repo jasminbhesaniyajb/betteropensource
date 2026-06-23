@@ -4,6 +4,7 @@ import { Brand } from "@/components/common/brand";
 import { Icon } from "@/components/common/icon";
 import { NewsletterForm } from "@/components/common/newsletter-form";
 import { StarOnGithub } from "@/components/layout/star-on-github";
+import { ProductHuntBadge } from "@/components/layout/product-hunt-badge";
 import { footerNav, socialLinks } from "@/constants/navigation";
 import {
   getCategoriesWithCounts,
@@ -53,6 +54,7 @@ export function SiteFooter() {
               developers discover open-source alternatives.
             </p>
             <StarOnGithub className="w-fit" />
+            <ProductHuntBadge className="mt-1" />
           </div>
 
           {/* Link columns */}
